@@ -1,0 +1,61 @@
+{
+  "name": "@sing-group/mtc-games-demo",
+  "version": "0.1.0-alpha.1",
+  "description": "MultiTasking Cubes - Games Demos",
+  "license": "GPL-3.0",
+  "author": [
+    {
+      "name": "Miguel Reboiro-Jato",
+      "email": "mrjato@uvigo.es"
+    }
+  ],
+  "contributors": [
+    "Andrés Vieira Vázquez",
+    "Adolfo Piñón Blanco",
+    "Hugo López-Fernández",
+    "Rosalía Laza Fidalgo",
+    "Reyes Pavón Rial",
+    "Francisco Otero Lamas",
+    "Adrián Varela Pomar",
+    "Carlos Spuch Calvar",
+    "Tania Rivera Baltanás"
+  ],
+  "main": "index.js",
+  "repository": "https://github.com/sing-group/mtc-games-demo.git",
+  "publishConfig": {
+    "registry": "https://maven.sing-group.org/repository/npm-snapshots/"
+  },
+  "scripts": {
+    "dev": "webpack",
+    "deploy": "webpack --config webpack.production.config.js",
+    "test": "eslint './src/**/*.js'"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-eslint": "8.1.2",
+    "babel-loader": "7.1.2",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "browser-sync": "2.22.0",
+    "browser-sync-webpack-plugin": "1.2.0",
+    "clean-webpack-plugin": "0.1.17",
+    "copy-webpack-plugin": "4.3.1",
+    "eslint": "4.14.0",
+    "eslint-config-standard": "10.2.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-node": "5.2.1",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-standard": "3.0.1",
+    "expose-loader": "0.7.4",
+    "file-loader": "1.1.6",
+    "html-webpack-plugin": "2.30.1",
+    "style-loader": "0.19.1",
+    "url-loader": "0.6.2",
+    "webpack": "3.10.0"
+  },
+  "dependencies": {
+    "@sing-group/mtc-games": "0.1.0-alpha.20",
+    "phaser-ce": "2.9.4",
+    "webfontloader": "1.6.28"
+  }
+}

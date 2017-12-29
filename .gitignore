@@ -1,0 +1,19 @@
+# Node
+node_modules
+.npmrc
+npm-debug.log
+
+# IntelliJ
+.idea
+
+# Visual Studio Code
+.vscode
+
+# Build
+sing-group-mtc-games-*.tgz
+dist
+/index.html
+
+# Generic
+bak
+*.bak
