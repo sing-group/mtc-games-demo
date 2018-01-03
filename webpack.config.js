@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -72,17 +73,20 @@ module.exports = {
         use: ['expose-loader?p2']
       },
       {
-        test: /\.js$/, use: ['babel-loader'],
-        include: path.join(__dirname, 'src')
+        test: /\.js$/,
+        use: ['babel-loader'],
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'src')
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [ 'style-loader!css-loader' ]
       },
       {
         test: /\.(png|jp(e*)g|svg)$/,
         include: [
-          path.join(__dirname, '/node_modules/@sing-group/mtc-games/src/assets/image')
+          fs.realpathSync(path.resolve(__dirname, 'node_modules/@sing-group/mtc-games/src/assets/image'))
         ],
         use: [{
           loader: 'url-loader',
@@ -99,6 +103,7 @@ module.exports = {
     tls: 'empty'
   },
   resolve: {
+    symlinks: true,
     alias: {
       'phaser': phaser,
       'pixi': pixi,

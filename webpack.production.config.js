@@ -72,11 +72,14 @@ module.exports = {
         use: ['expose-loader?p2']
       },
       {
-        test: /\.js$/, use: ['babel-loader'],
+        test: /\.js$/,
+        use: ['babel-loader'],
+        exclude: /node_modules/,
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [ 'style-loader!css-loader' ]
       },
       {
