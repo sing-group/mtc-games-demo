@@ -22,63 +22,63 @@
 import 'pixi';
 import 'p2';
 
+import GameConfig from '@sing-group/mtc-games/src/game/GameConfig';
 import VerbalFluencyGame from '@sing-group/mtc-games/src/game/verbal_fluency/VerbalFluencyGame';
-import VerbalFluencyGameConfig from '@sing-group/mtc-games/src/game/verbal_fluency/VerbalFluencyGameConfig';
+import VerbalFluencyGameMetadata from '@sing-group/mtc-games/src/game/verbal_fluency/VerbalFluencyGameMetadata';
+import VerbalFluencyGameCallback from '@sing-group/mtc-games/src/game/verbal_fluency/VerbalFluencyGameCallback';
 import RecognitionGame from '@sing-group/mtc-games/src/game/recognition/RecognitionGame';
-import RecognitionGameConfig from '@sing-group/mtc-games/src/game/recognition/RecognitionGameConfig';
+import RecognitionGameMetadata from '@sing-group/mtc-games/src/game/recognition/RecognitionGameMetadata';
+import RecognitionGameCallback from '@sing-group/mtc-games/src/game/recognition/RecognitionGameCallback';
 
-// Common functions
-function gameStartHandler() {
-  console.log("The game has started");
-}
-
-function gameEndHandler(result){
-  console.log("The game has ended. Results:");
-  console.log(result);
-}
-
-
-// region Test VerbalFluencyGame
-
-function gameResetHandler(){
-  console.log("User pressed reset");
-}
-
-function gameCheckHandler(result){
-  console.log("User checked a word. Result: ");
-  console.log(result);
-}
-
-let gameConfig1 = new VerbalFluencyGameConfig();
-gameConfig1.resX = 800;
-gameConfig1.resY = 600;
+const gameConfig1 = GameConfig.forMetadata(
+  new VerbalFluencyGameMetadata(),
+  VerbalFluencyGameCallback.buildWith({
+    gameStarted() {
+      console.log('Verbal Fluency started');
+    },
+    gameFinished() {
+      console.log('Verbal Fluency finished');
+    },
+    wordReset() {
+      console.log('Verbal Fluency word checked');
+    },
+    wordChecked() {
+      console.log('Verbal Fluency word reset');
+    }
+  })
+);
+gameConfig1.width = 800;
+gameConfig1.height = 600;
 gameConfig1.time = 20;
 gameConfig1.domId = 'div1';
 gameConfig1.locale = 'en_US';
-gameConfig1.gameStartCallbackFunction = gameStartHandler;
-gameConfig1.gameEndCallbackFunction = gameEndHandler;
-gameConfig1.gameCheckCallbackFunction = gameCheckHandler;
-gameConfig1.gameResetCallbackFunction = gameResetHandler;
 
-const game1 = new VerbalFluencyGame(gameConfig1);
+new VerbalFluencyGame(gameConfig1);
 
 // endregion
 
 // region Test RecognitionGame
-
-let gameConfig2 = new RecognitionGameConfig();
-gameConfig2.resX = 800;
-gameConfig2.resY = 600;
+const gameConfig2 = GameConfig.forMetadata(
+  new RecognitionGameMetadata(),
+  RecognitionGameCallback.buildWith({
+    gameStarted() {
+      console.log('Recognition started');
+    },
+    gameFinished() {
+      console.log('Recognition finished');
+    }
+  })
+);
+gameConfig2.width = 800;
+gameConfig2.height = 600;
 gameConfig2.time = 20;
 gameConfig2.domId = 'div2';
 gameConfig2.locale = 'en_US';
 gameConfig2.timePerElement = 3;
 gameConfig2.numberOfElements = 2;
 gameConfig2.numberOfTries = 2;
-gameConfig2.responseIntroduction = RecognitionGameConfig.RESPONSETYPES.NORMAL;
-gameConfig2.gameStartCallbackFunction = gameStartHandler;
-gameConfig2.gameEndCallbackFunction = gameEndHandler;
+gameConfig2.responseIntroduction = RecognitionGameMetadata.RESPONSE_TYPES[0];
 
-const game2 = new RecognitionGame(gameConfig2);
+new RecognitionGame(gameConfig2);
 
 // endregion
