@@ -23,12 +23,13 @@ import 'pixi';
 import 'p2';
 
 import GameConfig from '@sing-group/mtc-games/src/game/GameConfig';
-import VerbalFluencyGame from '@sing-group/mtc-games/src/game/verbal_fluency/VerbalFluencyGame';
+import GameBuilder from '@sing-group/mtc-games/src/game/GameBuilder';
 import VerbalFluencyGameMetadata from '@sing-group/mtc-games/src/game/verbal_fluency/VerbalFluencyGameMetadata';
 import VerbalFluencyGameCallback from '@sing-group/mtc-games/src/game/verbal_fluency/VerbalFluencyGameCallback';
-import RecognitionGame from '@sing-group/mtc-games/src/game/recognition/RecognitionGame';
 import RecognitionGameMetadata from '@sing-group/mtc-games/src/game/recognition/RecognitionGameMetadata';
 import RecognitionGameCallback from '@sing-group/mtc-games/src/game/recognition/RecognitionGameCallback';
+
+const builder = new GameBuilder();
 
 const gameConfig1 = GameConfig.forMetadata(
   new VerbalFluencyGameMetadata(),
@@ -53,7 +54,7 @@ gameConfig1.time = 20;
 gameConfig1.domId = 'div1';
 gameConfig1.locale = 'en_US';
 
-new VerbalFluencyGame(gameConfig1);
+builder.buildGame(gameConfig1);
 
 // endregion
 
@@ -79,6 +80,6 @@ gameConfig2.numberOfElements = 2;
 gameConfig2.numberOfTries = 2;
 gameConfig2.responseIntroduction = RecognitionGameMetadata.RESPONSE_TYPES[0];
 
-new RecognitionGame(gameConfig2);
+builder.buildGame(gameConfig2);
 
 // endregion

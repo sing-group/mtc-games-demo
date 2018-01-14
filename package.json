@@ -1,14 +1,12 @@
 {
   "name": "@sing-group/mtc-games-demo",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "description": "MultiTasking Cubes - Games Demos",
   "license": "GPL-3.0",
-  "author": [
-    {
-      "name": "Miguel Reboiro-Jato",
-      "email": "mrjato@uvigo.es"
-    }
-  ],
+  "author": {
+    "name": "Miguel Reboiro-Jato",
+    "email": "mrjato@uvigo.es"
+  },
   "contributors": [
     "Andrés Vieira Vázquez",
     "Adolfo Piñón Blanco",
@@ -54,7 +52,7 @@
     "webpack": "3.10.0"
   },
   "dependencies": {
-    "@sing-group/mtc-games": "0.1.0-alpha.23",
+    "@sing-group/mtc-games": "0.1.0-alpha.31",
     "phaser-ce": "2.9.4",
     "webfontloader": "1.6.28"
   }
