@@ -13,6 +13,7 @@ npm-debug.log
 sing-group-mtc-games-*.tgz
 dist
 /index.html
+send_to_server.sh
 
 # Generic
 bak

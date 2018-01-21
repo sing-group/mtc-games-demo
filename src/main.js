@@ -22,6 +22,7 @@
 import 'pixi';
 import 'p2';
 
+
 import GameConfig from '@sing-group/mtc-games/src/game/GameConfig';
 import GameBuilder from '@sing-group/mtc-games/src/game/GameBuilder';
 import VerbalFluencyGameMetadata from '@sing-group/mtc-games/src/game/verbal_fluency/VerbalFluencyGameMetadata';
@@ -29,8 +30,31 @@ import VerbalFluencyGameCallback from '@sing-group/mtc-games/src/game/verbal_flu
 import RecognitionGameMetadata from '@sing-group/mtc-games/src/game/recognition/RecognitionGameMetadata';
 import RecognitionGameCallback from '@sing-group/mtc-games/src/game/recognition/RecognitionGameCallback';
 
+let locale;
+
+if (window.navigator.languages) {
+  locale = window.navigator.languages[0].substr(0, 2).toLowerCase();
+} else {
+  locale = window.navigator.language.substr(0, 2).toLowerCase();
+}
+
+switch (locale) {
+  case 'en':
+    locale = 'en_US';
+    break;
+  case 'es':
+    locale = 'es_ES';
+    break;
+  case 'gl':
+    locale = 'gl_ES';
+    break;
+  default:
+    locale = 'en_US';
+}
+
 const builder = new GameBuilder();
 
+// region Test VerbalFluency
 const gameConfig1 = GameConfig.forMetadata(
   new VerbalFluencyGameMetadata(),
   VerbalFluencyGameCallback.buildWith({
@@ -50,9 +74,9 @@ const gameConfig1 = GameConfig.forMetadata(
 );
 gameConfig1.width = 800;
 gameConfig1.height = 600;
-gameConfig1.time = 20;
+gameConfig1.time = 60;
 gameConfig1.domId = 'div1';
-gameConfig1.locale = 'en_US';
+gameConfig1.locale = locale;
 
 builder.buildGame(gameConfig1);
 
@@ -72,9 +96,9 @@ const gameConfig2 = GameConfig.forMetadata(
 );
 gameConfig2.width = 800;
 gameConfig2.height = 600;
-gameConfig2.time = 20;
+gameConfig2.time = 60;
 gameConfig2.domId = 'div2';
-gameConfig2.locale = 'en_US';
+gameConfig2.locale = locale;
 gameConfig2.timePerElement = 3;
 gameConfig2.numberOfElements = 2;
 gameConfig2.numberOfTries = 2;
